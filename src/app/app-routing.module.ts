@@ -1,3 +1,4 @@
+import { BoardComponent } from './pages/board/board.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ServiceComponent } from './pages/service/service.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'service', component: ServiceComponent },
+  { path: 'board', component: BoardComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
