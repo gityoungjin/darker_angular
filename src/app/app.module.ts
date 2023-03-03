@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ServiceComponent } from './pages/service/service.component';
 import { AboutComponent } from './pages/about/about.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { BoardComponent } from './pages/board/board.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { NavComponent } from './layouts/nav/nav.component';
@@ -20,7 +19,6 @@ import { BodyComponent } from './layouts/body/body.component';
     HomeComponent,
     ServiceComponent,
     AboutComponent,
-    NotFoundComponent,
     BoardComponent,
     HeaderComponent,
     NavComponent,
