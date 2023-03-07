@@ -1,5 +1,13 @@
-<app-header></app-header>
-<app-nav></app-nav>
-<app-body></app-body>
-<app-aside></app-aside>
-<app-footer></app-footer>
+<!-- <app-header></app-header> -->
+<mat-grid-list cols="5" style="padding:10px;" rowHeight="100%">
+    <mat-grid-tile colspan="1">
+        <app-nav></app-nav>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3">
+        <app-body></app-body>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1">
+        <app-aside></app-aside>
+    </mat-grid-tile>
+</mat-grid-list>
+<!-- <app-footer></app-footer> -->

@@ -12,6 +12,16 @@ import { NavComponent } from './layouts/nav/nav.component';
 import { AsideComponent } from './layouts/aside/aside.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { BodyComponent } from './layouts/body/body.component';
+import { MyBoardComponent } from './pages/my-board/my-board.component';
+import { MyBoardDirective } from './pages/my-board/my-board.directive';
+import { ChangeLoggerDirective } from './pages/my-board/change-logger.directive';
+import { InputTextComponent } from './input-text/input-text.component';
+import { MyPostComponent } from './my-post/my-post.component';
+import { PostLoggerComponent } from './post-logger/post-logger.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { TimerComponent } from './timer/timer.component';
+import { TimerPageComponent } from './pages/timer-page/timer-page.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +35,21 @@ import { BodyComponent } from './layouts/body/body.component';
     AsideComponent,
     FooterComponent,
     BodyComponent,
+    MyBoardComponent,
+    MyBoardDirective,
+    ChangeLoggerDirective,
+    InputTextComponent,
+    MyPostComponent,
+    PostLoggerComponent,
+    TimerComponent,
+    TimerPageComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatGridListModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

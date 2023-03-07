@@ -1,0 +1,28 @@
+<div>
+    <!-- title input -->
+    <h2>{{board}}</h2>
+    <!-- <ul>
+        <li *ngFor="let post of posts" appMyBoard>
+            <ng-container *ngIf="true">
+                <h1>
+                    title: {{post.title}}
+                </h1>
+                <h2>
+                    content: {{post.content}}
+                </h2>
+            </ng-container> 
+        </li>
+    </ul> -->
+    <div>
+        title : <app-input-text [(message)]="postTitle" appChangeLogger></app-input-text>
+        content : <app-input-text [(message)]="postContent" appChangeLogger></app-input-text>
+        <button type="button" (click)="addPost()">add post</button>
+    </div>
+    <div>
+        <div *ngFor="let post of posts">
+            <app-my-post [post]="post" [board]="board" (postDeleted)="onPostDeleted($event)" #postElement></app-my-post>
+            <button (click)="postElement.increaseLikes()">like</button>
+        </div>
+    </div>
+    <app-post-logger [size]="postSize" [title]="postTitle"></app-post-logger>
+</div>
