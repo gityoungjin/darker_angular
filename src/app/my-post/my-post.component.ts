@@ -12,13 +12,14 @@ export class MyPostComponent {
   
   @Input('board') boardName = '';
   // @Input() post!: Post;
+  likes = 0;
   @Input() 
   get post(): Post { return this._post;}
   set post(post: Post) {
     this._post = post;
     this._post.title = this.titleSummary(post.title);
     this._post.id = id++;
-    this._post.likes = 0;
+    this._post.likes = this.likes;
   }
   private _post = {} as Post;
 
@@ -32,8 +33,7 @@ export class MyPostComponent {
     this.postDeleted.emit(id);
   }
   increaseLikes(): void {
-    console.log(this.post)
-    this.post.likes = this.post.likes??0 + 1;
-    console.log(this.post)
+    this.likes++;
+    console.log(this.post);
   }
 }  
