@@ -1,4 +1,5 @@
 import { Component, ContentChild, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Post, Posts } from 'src/app/my-post/Post';
 import { ChildComponent } from './child.component';
 
@@ -9,38 +10,57 @@ import { ChildComponent } from './child.component';
   // encapsulation: ViewEncapsulation.None // [None, Emulated ,ShadowDome] css 적용범위 지정
 })
 export class MyBoardComponent implements OnInit, OnDestroy {
+
   hero = 'Windstorm';
   power = 5;
   parentMessage: string = "";
-  
-  posts=Posts;
+
+  posts = Posts;
   postSize = this.posts.length;
   postTitle = "";
   postContent = "";
-  
+  searchText = "";
   board = 'myboard';
 
   @ContentChild(ChildComponent) contentChild!: ChildComponent;
 
   constructor() { }
 
-  onPostDeleted(postId: number){
+  onPostDeleted(postId: number) {
     this.posts = this.posts.filter(post => post.id !== postId);
     this.postSize = this.posts.length;
   }
 
-  addPost(){
+  onPostLiked($event: Post) {
+    console.log($event);
+    this.posts = this.posts.map(post => {
+      if (post.id === $event.id) {
+        post.likes = $event.likes;
+      }
+      return post;
+    });
+  }
+
+  search(text: string) {
+    this.searchText = text;
+  }
+
+  addPost() {
     this.posts.push({
-      title: this.postTitle, 
+      title: this.postTitle,
       content: this.postContent
     });
     this.postSize = this.posts.length;
   }
 
+  onSubmit(f: NgForm) {
+    console.log('submit');
+    console.log(f);
+  }
+
   ngOnInit(): void {
     console.log('MyBoardComponent created');
   }
-
   ngOnDestroy(): void {
     console.log('MyBoardComponent destroyed');
   }
@@ -94,7 +114,7 @@ export class MyBoardComponent implements OnInit, OnDestroy {
     //   this.doSomething();
     // }
   }
-  
+
 
 
 }

@@ -22,6 +22,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TimerComponent } from './timer/timer.component';
 import { TimerPageComponent } from './pages/timer-page/timer-page.component';
+import { TimerPage2Component } from './pages/timer-page2/timer-page2.component';
+import { MissionControlComponent } from './pages/mission-control/mission-control.component';
+import { AstronautComponent } from './astronaut/astronaut.component';
+import { FormsModule } from '@angular/forms';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   declarations: [
@@ -43,12 +48,17 @@ import { TimerPageComponent } from './pages/timer-page/timer-page.component';
     PostLoggerComponent,
     TimerComponent,
     TimerPageComponent,
+    TimerPage2Component,
+    MissionControlComponent,
+    AstronautComponent,
+    HighlightDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatGridListModule
+    MatGridListModule,
+    FormsModule
 
   ],
   providers: [],

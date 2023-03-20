@@ -13,16 +13,62 @@
             </ng-container> 
         </li>
     </ul> -->
+    <!--search-->
+
+    <div>  
+        단방향 : <input type="text" #searchInputText (input)="search(searchInputText.value)">
+        <button (click)="search(searchInputText.value)">Search</button>
+        <p>{{searchText}}</p>
+    </div>
+    <div>
+        <!-- 기본 제공 HTML 요소가 x값 및 xChange이벤트 패턴을 따르지 않기 때문에 양식 요소와의 양방향 바인딩에는 NgModel -->
+        양방향 :<input type="text" [(ngModel)]="searchText" #ctrl="ngModel" required>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+            <button type="submit">Search</button>
+        </form>
+        <p>{{searchText}}</p>
+        <div [hidden]="!f.form.valid">
+            <p>Hidden Valid: {{ ctrl.valid }}</p>
+        </div>
+        <p>Valid: {{ ctrl.valid }}</p>
+    </div>
     <div>
         title : <app-input-text [(message)]="postTitle" appChangeLogger></app-input-text>
         content : <app-input-text [(message)]="postContent" appChangeLogger></app-input-text>
         <button type="button" (click)="addPost()">add post</button>
     </div>
     <div>
-        <div *ngFor="let post of posts">
-            <app-my-post [post]="post" [board]="board" (postDeleted)="onPostDeleted($event)" #postElement></app-my-post>
+        <ng-container *ngFor="let post of posts">
+            <app-my-post [post]="post" [board]="board" (postDeleted)="onPostDeleted($event)" (postLiked)="onPostLiked($event)" #postElement>
+                <p>ng-content</p>
+                <p haha>ng-content selector</p>
+                <ng-container *ngIf="(post.id??0) % 2 === 0"  ngProjectAs="[haha]">
+                    <!-- <ng-template [ngClass]="'outer angular'" > -->
+                        <p [ngClass]="'innerangular'">여기는 짝수</p>
+                    <!-- </ng-template> -->
+                </ng-container>
+            </app-my-post>
             <button (click)="postElement.increaseLikes()">like</button>
-        </div>
+        </ng-container>
     </div>
+    <div> 
+        Ng-템플릿 콘텐츠 
+        <div *ngIf= "false; then showNgTemplateContent; else showNgTemplateContent2;"> 
+           표시되지 않아야 함 
+        </div> 
+     </div> 
+      
+     <ng-template #showNgTemplateContent> 표시되어야 함 
+    </ng-template>
+     <ng-template #showNgTemplateContent2> 표시되어야 함 2
+     </ng-template>
+
+     <div [ngSwitch]="'dw'">
+        <div   *ngSwitchCase="'1'">1</div>
+        <div   *ngSwitchCase="'2'">2</div>
+        <div   *ngSwitchCase="'3'">3</div>
+        <div   *ngSwitchCase="'4'">4</div>
+        <div  *ngSwitchDefault >defalut</div>
+      </div>
     <app-post-logger [size]="postSize" [title]="postTitle"></app-post-logger>
 </div>
