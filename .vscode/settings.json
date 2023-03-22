@@ -1,4 +1,0 @@
-{
-  "github.gitProtocol": "ssh",
-  "github.sshCommand": "ssh -i ~/.ssh/id_rsa_yj"
-}
